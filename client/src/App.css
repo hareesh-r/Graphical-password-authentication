@@ -1,4 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Roboto&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+  box-shadow: none;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.login-title h1{
+  font-family: 'Courgette', cursive;
+  color: #57545A;
+}
+
+.login-button {
+  margin: auto;
+  cursor: pointer;
+}
+
+.logo img{
+
+  width: 100px;
+}
+.container {
+  width: 550px;
+  height: 100vh;
+  background: linear-gradient(180deg, #8760d0be , #ffffff, #84CEEB);
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-button-grp {
+  flex-direction: row;
+  justify-content: space-around;
+}
+input {
+  outline: none;
+  border-radius: 10px;
+  height: 41px;
+  border: 2px solid #56BBEF;
+  padding: 0 20px;
+}
+input:focus::-webkit-input-placeholder {
+  color: rgba(255, 0, 0, 0);
+}
+input:focus:-moz-placeholder {
+  color: rgba(255, 0, 0, 0);
+}
+input:focus::-moz-placeholder {
+  color: rgba(255, 0, 0, 0);
+}
+input:focus:-ms-input-placeholder {
+  color: rgba(255, 0, 0, 0);
+}
+.input-group {
+  position: relative;
+}
+.input-group input {
+  width: 300px;
+}
+.email-text {
+  position: absolute;
+  top: -9px;
+  left: 125px;
+}
+.patch {
+  position: absolute;
+  top: -1px;
+  left: 126px;
+  width: 41px;
+  height: 12px;
+  color: white;
+  background-color: #fff;
+}
+
+.forgot-password a {
+  font-family: Roboto;
+  font-size: 13px;
+  font-style: italic; 
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
+  left: 20px;
 }
