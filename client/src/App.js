@@ -1,4 +1,5 @@
 import "./App.css";
+import ImageInput from "./ImageInput";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -16,7 +17,7 @@ function App() {
       <button
         className="login-button"
         onClick={() => {
-          window.open('', "Login", features);
+          window.open("", "Login", features);
           // window.open(`component`, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
         }}
       >
@@ -24,6 +25,7 @@ function App() {
       </button>
       <Login />
       <Register />
+      <ImageInput />
     </div>
   );
 }
