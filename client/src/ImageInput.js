@@ -3,6 +3,7 @@ import logo from "./asset/img/logo.png";
 import "./App.css";
 import { useState } from "react";
 import background from "./asset/img/background.jpg";
+import { BrowserRouter as Link } from "react-router-dom";
 function ImageInput() {
   const [count, setCount] = useState(0);
   var imageList = [

@@ -200,6 +200,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .center img {
+  margin: 5px;
   width: 100px;
   height: 100px;
 }
@@ -216,7 +217,14 @@ input:focus:-ms-input-placeholder {
   filter: blur(5px);
 }
 
+.PasswordSet .bg-img,
 .ImageInput .bg-img {
   z-index: -1;
   width: 100%;
+  margin-top: -380px;
+}
+
+.gif img{
+  width: 400px;
+  height: 100%;
 }

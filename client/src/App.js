@@ -1,6 +1,8 @@
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ImageInput from "./ImageInput";
 import Login from "./Login";
+import PasswordSet from "./PasswordSet";
 import Register from "./Register";
 
 function App() {
@@ -14,18 +16,37 @@ function App() {
     ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,Scrollbars=1,Resizable=1";
   return (
     <div className="App">
-      <button
-        className="login-button"
-        onClick={() => {
-          window.open("", "Login", features);
-          // window.open(`component`, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
-        }}
-      >
-        Login
-      </button>
-      <Login />
-      <Register />
-      <ImageInput />
+      <Router>
+        <Link to="/Login">
+          <button
+            className="login-button"
+            onClick={() => {
+              window.open("", "Login", features);
+              // window.open(`component`, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+            }}
+          >
+            Login
+          </button>
+        </Link>
+        <Link to="/Register">Register</Link>
+        <Link to="/ImageInput">ImageInput</Link>
+        <Link to="/PasswordSet">PasswordSet</Link>
+        <Link to="/Login">Login</Link>
+        <Switch>
+          <Route path="/Login">
+            <Login />
+          </Route>
+          <Route path="/Register">
+            <Register />
+          </Route>
+          <Route path="/ImageInput">
+            <ImageInput />
+          </Route>
+          <Route path="/PasswordSet">
+            <PasswordSet />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

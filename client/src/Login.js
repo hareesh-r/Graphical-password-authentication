@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
+
 function Login() {
   return (
     <div className="container">
@@ -40,11 +41,11 @@ function Login() {
       </div>
       <div className="bottom">
         <div className="bottom-button-grp flex">
-          <button className="bottom-button">Don't have an account ?</button>
-          <button className="bottom-button">I'm already here</button>
+              <button className="bottom-button">Don't have an account ?</button>
+              <button className="bottom-button">I'm already here</button>
         </div>
       </div>
-      <img class="bg-img" src={background} alt="" />
+      <img className="bg-img" src={background} alt="" />
     </div>
   );
 }
