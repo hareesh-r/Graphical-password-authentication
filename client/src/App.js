@@ -1,5 +1,6 @@
 import "./App.css";
 import Login from "./Login";
+import Register from "./Register";
 
 function App() {
   var theTop = (window.screen.height / 2 - 600 / 2) / 2;
@@ -22,6 +23,7 @@ function App() {
         Login
       </button>
       <Login />
+      <Register />
     </div>
   );
 }

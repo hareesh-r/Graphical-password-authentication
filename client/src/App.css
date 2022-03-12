@@ -1,20 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-shadow: none;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
 }
+
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
-.login-title h1{
-  font-family: 'Courgette', cursive;
-  color: #57545A;
+
+.login-title h1 {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: 'RobotoFlex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: white;
 }
 
 .login-button {
@@ -22,20 +35,41 @@
   cursor: pointer;
 }
 
-.logo img{
+.logo img {
+  width: 40px;
+}
 
-  width: 100px;
-}
 .container {
-  width: 550px;
-  height: 100vh;
-  background: linear-gradient(180deg, #8760d0be , #ffffff, #84CEEB);
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 554px;
+  margin: 20px;
 }
+
+.input-group {
+  margin: 50px;
+  display: flex;
+  align-items: flex-start;
+}
+
 .top {
+  border-radius: 10px 10px 0px 0px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  background-color: #2945a7;
+}
+
+.forgot-password {
+  color: #1b47e2;
+}
+
+.forgot-password a {
+  color: #1b47e2;
 }
 
 .flex {
@@ -49,40 +83,50 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
 input {
   outline: none;
   border-radius: 10px;
   height: 41px;
-  border: 2px solid #56BBEF;
+  border: 2px solid #56bbef;
   padding: 0 20px;
 }
+
 input:focus::-webkit-input-placeholder {
   color: rgba(255, 0, 0, 0);
 }
+
 input:focus:-moz-placeholder {
   color: rgba(255, 0, 0, 0);
 }
+
 input:focus::-moz-placeholder {
   color: rgba(255, 0, 0, 0);
 }
+
 input:focus:-ms-input-placeholder {
   color: rgba(255, 0, 0, 0);
 }
+
 .input-group {
   position: relative;
+  align-items: flex-start;
 }
+
 .input-group input {
   width: 300px;
 }
+
 .email-text {
   position: absolute;
   top: -9px;
-  left: 127px;
+  left: 20px;
 }
+
 .patch {
   position: absolute;
   top: -1px;
-  left: 126px;
+  left: 21px;
   width: 41px;
   height: 12px;
   color: white;
@@ -92,11 +136,64 @@ input:focus:-ms-input-placeholder {
 .forgot-password a {
   font-family: Roboto;
   font-size: 13px;
-  font-style: italic; 
+  font-style: italic;
   font-weight: 600;
   line-height: 15px;
   letter-spacing: 0em;
   text-align: left;
   text-decoration: none;
   left: 20px;
+}
+
+.bottom-button {
+  cursor: pointer;
+  width: 175px;
+  height: 43px;
+  background: #38b3f3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 0px;
+  font-family: Roboto;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: center;
+
+}
+
+.hidden {
+  transform: translateY(10px);
+  display: none;
+}
+
+.visible {
+  transform: translateY(0px);
+  transition: ease-in-out;
+  display: block;
+}
+
+.bottom {
+  margin-bottom: 255px;
+}
+
+.bg-img {
+  margin-top: -586px;
+  z-index: -7;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
 }
