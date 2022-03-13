@@ -296,7 +296,11 @@ function ImageInput(isLogin) {
           <div className="bottom-button-grp flex">
             <button
               onClick={() => {
-                console.log(SHA256(hashValue.toString()));
+                var hash = ''
+                for (const key in hashValue) {
+                  hash+=hashValue[key]
+                }
+                console.log(SHA256(hash));
               }}
               className="bottom-button"
             >
