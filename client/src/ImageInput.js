@@ -274,20 +274,16 @@ function ImageInput(isLogin) {
                     element.classList.remove("selected");
                     const currImage = image;
                     const currVal = hashValue[image];
-                    console.log(currImage);
-                    console.log(currVal);
                     for (const key in hashValue) {
                       if (key == currImage) {
                         delete hashValue[key];
                       }
                     }
-                    console.log(hashValue);
                   } else {
                     var element = document.getElementById(index);
                     element.classList.add("selected");
                     hashValue[image] = SHA256(image);
                   }
-                  console.log(hashValue);
                 }}
                 className="password-image"
               >
