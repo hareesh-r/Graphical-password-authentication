@@ -33,6 +33,23 @@ function Login() {
             }}
             type="text"
             placeholder="Email"
+            onChange={(e) => {
+              if (e.target.value == "") {
+                var element = document.getElementById("toggle");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+                element = document.getElementById("toggle1");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+              } else {
+                var element = document.getElementById("toggle");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
+                element = document.getElementById("toggle1");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
+              }
+            }}
           />
           <div className="forgot-password">
             <a href="">Forgot Password ?</a>

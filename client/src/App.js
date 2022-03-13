@@ -9,11 +9,11 @@ function App() {
   var theTop = (window.screen.height / 2 - 600 / 2) / 2;
   var theLeft = window.screen.width / 2 - 800 / 2;
   var features =
-    "height=600,width=800,top=" +
+    "height=500,width=460,top=" +
     theTop +
     ",left=" +
     theLeft +
-    ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,Scrollbars=1,Resizable=1";
+    ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,scrollbars=false,resizable=0";
   return (
     <div className="App">
       <Router>
@@ -21,8 +21,11 @@ function App() {
           <button
             className="login-button"
             onClick={() => {
-              window.open("", "Login", features);
-              // window.open(`component`, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+              window.open(
+                "http://localhost:3000/PasswordSet",
+                "Login",
+                features
+              );
             }}
           >
             Login

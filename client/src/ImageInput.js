@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
+import deleteImage from "./asset/img/delete.svg";
 
 function SHA256(s) {
   var chrsz = 8;
@@ -232,9 +233,9 @@ function shuffle(array) {
 }
 
 function ImageInput(isLogin) {
-  console.log(isLogin);
-  var value = 0;
+  var isLogin = isLogin;
   var hashValue = [];
+
   var imageList = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_OEOKvq4FqE1ixXabz_0KA55kNp0NtYcfqw&usqp=CAU",
@@ -243,10 +244,9 @@ function ImageInput(isLogin) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5_f-3Npwnj40B6u8O8WmcX8swxRqUS8ncQg&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0VjnBrfx77ksp21B977As27VwMMASlNP3Aw&usqp=CAU",
   ];
   shuffle(imageList);
+
   return (
     <div className="ImageInput">
       <div className="container">
@@ -260,34 +260,52 @@ function ImageInput(isLogin) {
         </div>
         <div className="center">
           <div className="image-container">
+            {!isLogin.isLogin && (
+              <label className="password-image">
+                <input type="file" />
+                <img
+                  src="https://ytexpert.net/wp-content/uploads/2019/10/The-Best-Way-To-Upload-Videos-To-YouTube.png"
+                  alt=""
+                />
+              </label>
+            )}
             {imageList.map((image, index) => (
-              <div
-                key={index}
-                id={index}
-                onClick={() => {
-                  if (
-                    document
-                      .getElementById(index)
-                      .classList.contains("selected")
-                  ) {
-                    var element = document.getElementById(index);
-                    element.classList.remove("selected");
-                    const currImage = image;
-                    const currVal = hashValue[image];
-                    for (const key in hashValue) {
-                      if (key == currImage) {
-                        delete hashValue[key];
+              <div key={index} id={index} className="password-image">
+                {!isLogin.isLogin && (
+                  <img
+                    onClick={() => {
+                      var element = document.getElementById(index);
+                      element.classList.add("hidden");
+                    }}
+                    className="delete-icon"
+                    src={deleteImage}
+                    alt=""
+                  />
+                )}
+                <img
+                  onClick={() => {
+                    if (
+                      document
+                        .getElementById(index)
+                        .classList.contains("selected")
+                    ) {
+                      var element = document.getElementById(index);
+                      element.classList.remove("selected");
+                      const currImage = image;
+                      for (const key in hashValue) {
+                        if (key == currImage) {
+                          delete hashValue[key];
+                        }
                       }
+                    } else {
+                      var element = document.getElementById(index);
+                      element.classList.add("selected");
+                      hashValue[image] = SHA256(image);
                     }
-                  } else {
-                    var element = document.getElementById(index);
-                    element.classList.add("selected");
-                    hashValue[image] = SHA256(image);
-                  }
-                }}
-                className="password-image"
-              >
-                <img src={image} alt="" />
+                  }}
+                  src={image}
+                  alt=""
+                />
               </div>
             ))}
           </div>
@@ -296,15 +314,15 @@ function ImageInput(isLogin) {
           <div className="bottom-button-grp flex">
             <button
               onClick={() => {
-                var hash = ''
+                var hash = "";
                 for (const key in hashValue) {
-                  hash+=hashValue[key]
+                  hash += hashValue[key];
                 }
                 console.log(SHA256(hash));
               }}
               className="bottom-button"
             >
-              Submit
+              {isLogin.isLogin ? "Login" : "Set"}
             </button>
           </div>
         </div>

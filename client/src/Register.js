@@ -32,6 +32,23 @@ function Register() {
             }}
             type="text"
             placeholder="Email"
+            onChange={(e) => {
+              if (e.target.value == "") {
+                var element = document.getElementById("toggle2");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+                element = document.getElementById("toggle3");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+              } else {
+                var element = document.getElementById("toggle2");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
+                element = document.getElementById("toggle3");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
+              }
+            }}
           />
           <div className="forgot-password">
             <a href="">Forgot Password ?</a>
@@ -41,6 +58,9 @@ function Register() {
       <div className="bottom">
         <div className="bottom-button-grp flex">
           <button className="bottom-button">Register</button>
+        </div>
+        <div className="bottom-text">
+          Already a user ? <a href="">Login</a>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />

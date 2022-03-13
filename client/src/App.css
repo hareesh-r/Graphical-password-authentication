@@ -14,6 +14,7 @@
 }
 
 .App {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,6 +149,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .bottom-button {
+  color: #fff;
   cursor: pointer;
   width: 175px;
   height: 43px;
@@ -225,14 +227,50 @@ input:focus:-ms-input-placeholder {
   width: 100%;
   margin-top: -380px;
 }
+
 .password-image img {
   object-fit: cover;
 }
-.gif img{
+
+.gif img {
   width: 400px;
   height: 100%;
 }
 
 .set {
   margin-bottom: 20px;
+}
+
+.bottom-text {
+  text-align: center;
+  margin: 10px;
+  color: white;
+}
+
+.bottom-text a {
+  text-decoration: none;
+  color: #1813E8;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0em;
+
+}
+
+.password-image input {
+  display: none;
+}
+
+.password-image {
+  position: relative;
+}
+
+.password-image .delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

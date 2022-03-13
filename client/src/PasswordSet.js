@@ -15,10 +15,16 @@ function PasswordSet() {
           </div>
         </div>
         <div className="gif center flex">
-        {/* https://cdn.dribbble.com/users/2185205/screenshots/7886140/02-lottie-tick-01-instant-2.gif */}
-          <img loop={false} src="https://media.giphy.com/media/MCtyDN245YrlidibEi/giphy.gif" alt="" />
+          <img
+            loop={false}
+            src="https://c.tenor.com/WRr_Vp2DKP8AAAAi/minion.gif"
+            alt=""
+          />
         </div>
-        <img class="bg-img" src={background} alt="" />
+        <div className="bottom-text">
+          Your password has been successfully saved
+        </div>
+        <img className="bg-img" src={background} alt="" />
       </div>
     </div>
   );
