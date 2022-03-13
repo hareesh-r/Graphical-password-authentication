@@ -57,7 +57,7 @@ function App() {
             <PasswordSet />
           </Route>
           <Route path="/Confrim">
-            <ConfrimPass />
+            <ConfrimPass prop={"hashHere"}/>
           </Route>
           <Route path="/Forgot">
             <ForgotPass />

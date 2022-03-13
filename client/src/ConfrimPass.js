@@ -2,7 +2,6 @@ import React from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
-import deleteImage from "./asset/img/delete.svg";
 
 function SHA256(s) {
   var chrsz = 8;
@@ -232,8 +231,7 @@ function shuffle(array) {
   return array;
 }
 
-function ImageInput(isLogin,title) {
-  var isLogin = isLogin;
+function ConfrimPass({ prop }) {
   var hashValue = [];
   var indivisualImageList = [];
   var imageList = [
@@ -260,6 +258,9 @@ function ImageInput(isLogin,title) {
           </div>
         </div>
         <div className="center">
+          <div id="warn" className="warning hidden">
+            Your Passwords don't match !!
+          </div>
           <div className="image-container">
             {imageList.map((image, index) => (
               <div key={index} id={index} className="password-image">
@@ -301,8 +302,16 @@ function ImageInput(isLogin,title) {
                   hash += hashValue[key];
                   indivisualImageList.push(key);
                 }
-                console.log(SHA256(hash));
+                hash = SHA256(hash);
+                console.log(hash);
                 console.log(indivisualImageList);
+
+                console.log(prop);
+                if (hash != prop) {
+                  var element = document.getElementById("warn");
+                  element.classList.remove("hidden");
+                  element.classList.add("visible");
+                }
               }}
               className="bottom-button"
             >
@@ -316,4 +325,4 @@ function ImageInput(isLogin,title) {
   );
 }
 
-export default ImageInput;
+export default ConfrimPass;

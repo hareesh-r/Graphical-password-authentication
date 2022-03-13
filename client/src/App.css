@@ -288,6 +288,7 @@ input:focus:-ms-input-placeholder {
 .warning {
   color: #EE1414;
   margin-top: 10px;
+  text-align: center
 }
 
 button:hover {

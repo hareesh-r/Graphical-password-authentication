@@ -23,7 +23,7 @@ function PasswordSet() {
           />
         </div>
         <div className="bottom-text successful">
-          Your password has been successfully saved
+          Your password has been successfully saved !!
         </div>
         <img className="bg-img" src={background} alt="" />
       </div>
