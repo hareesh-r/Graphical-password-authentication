@@ -180,6 +180,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .bg-img {
+  border-radius: 10px;
   margin-top: -586px;
   z-index: -7;
 }
