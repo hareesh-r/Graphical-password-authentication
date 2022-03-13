@@ -47,6 +47,7 @@
   width: 450px;
   height: 554px;
   margin: 20px;
+  border-radius: 10px;
 }
 
 .input-group {
@@ -127,8 +128,8 @@ input:focus:-ms-input-placeholder {
 .patch {
   position: absolute;
   top: -1px;
-  left: 21px;
-  width: 41px;
+  left: 20px;
+  width: 42px;
   height: 12px;
   color: white;
   background-color: #fff;
