@@ -60,7 +60,7 @@ function Login() {
       </div>
       <div className="bottom">
         <div className="bottom-button-grp flex">
-          <button className="bottom-button">Don't have an account ?</button>
+          <a href="http://localhost:3000/Register"><button className="bottom-button">Don't have an account ?</button></a>
           <button onClick={()=>console.log(email)} className="bottom-button">Sign in</button>
         </div>
       </div>

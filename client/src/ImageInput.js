@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
@@ -233,10 +233,32 @@ function shuffle(array) {
 }
 
 function ImageInput(isLogin) {
+  const [selectedFile, setSelectedFile] = useState();
+
+  const changeHandler = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+  const handleSubmission = () => {
+    const formData = new FormData();
+    formData.append("File", selectedFile);
+    fetch(" to mongo db ", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Success:", result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    console.log(imageList);
+  };
+
   var isLogin = isLogin;
   var hashValue = [];
   var indivisualImageList = [];
-  var imageList = [
+  const [imageList, setImageList] = useState([
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_OEOKvq4FqE1ixXabz_0KA55kNp0NtYcfqw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh6oPIzWAVL6bJTbPZ4N2paZ1xpqti-QRj7g&usqp=CAU",
@@ -244,8 +266,22 @@ function ImageInput(isLogin) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
-  ];
+  ]);
   shuffle(imageList);
+
+  useEffect(() => {
+    const image_input = document.querySelector("#image-input");
+    var uploaded_image;
+
+    image_input.addEventListener("change", function () {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        uploaded_image = reader.result;
+        setImageList([uploaded_image]);
+      });
+      reader.readAsDataURL(this.files[0]);
+    });
+  }, []);
 
   return (
     <div className="ImageInput">
@@ -259,10 +295,16 @@ function ImageInput(isLogin) {
           </div>
         </div>
         <div className="center">
-          <div className="image-container">
+          <div id="image-container" className="image-container">
             {!isLogin.isLogin && (
               <label className="password-image">
-                <input type="file" />
+                <input
+                  id="image-input"
+                  type="file"
+                  name="file"
+                  accept="image/gif, image/jpeg, image/png"
+                  onChange={changeHandler}
+                />
                 <img
                   src="https://ytexpert.net/wp-content/uploads/2019/10/The-Best-Way-To-Upload-Videos-To-YouTube.png"
                   alt=""
@@ -322,6 +364,7 @@ function ImageInput(isLogin) {
                 }
                 console.log(SHA256(hash));
                 console.log(indivisualImageList);
+                handleSubmission();
               }}
               className="bottom-button"
             >
