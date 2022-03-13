@@ -128,8 +128,8 @@ input:focus:-ms-input-placeholder {
 .patch {
   position: absolute;
   top: -1px;
-  left: 20px;
-  width: 42px;
+  left: 19px;
+  width: 44px;
   height: 12px;
   color: white;
   background-color: #fff;
