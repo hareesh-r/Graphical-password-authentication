@@ -66,7 +66,8 @@ function Login() {
           </Link>
           <Link to="/ImageInputLogin">
             <button
-              onClick={() => console.log(email)}
+              onClick={() => console.log(email)
+              }
               className="bottom-button"
             >
               Sign in

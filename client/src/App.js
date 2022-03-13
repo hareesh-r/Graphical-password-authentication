@@ -10,14 +10,6 @@ import Home from "./Home";
 import Success from "./Success";
 
 function App() {
-  // var theTop = (window.screen.height / 2 - 600 / 2) / 2;
-  // var theLeft = window.screen.width / 2 - 800 / 2;
-  // var features =
-  //   "height=500,width=460,top=" +
-  //   theTop +
-  //   ",left=" +
-  //   theLeft +
-  //   ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,scrollbars=false,resizable=0";
   return (
     <div className="App">
       <Router>

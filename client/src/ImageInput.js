@@ -4,6 +4,7 @@ import "./App.css";
 import background from "./asset/img/background.jpg";
 import deleteImage from "./asset/img/delete.svg";
 
+
 function SHA256(s) {
   var chrsz = 8;
   var hexcase = 0;
@@ -246,6 +247,7 @@ function ImageInput(isLogin) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
   ]);
+
   shuffle(imageList);
 
   const handleChange = (e) => {
@@ -257,6 +259,7 @@ function ImageInput(isLogin) {
       console.warn(e.target.result);
       setImageList([...imageList, e.target.result]);
     }
+
   }
 
   return (
@@ -342,7 +345,10 @@ function ImageInput(isLogin) {
                 }
                 console.log(SHA256(hash));
                 console.log(indivisualImageList);
+                window.opener.location.href=`http://localhost:3000/Success`;
+                window.close();
               }}
+
               className="bottom-button"
             >
               {isLogin.isLogin ? "Login" : "Set"}
