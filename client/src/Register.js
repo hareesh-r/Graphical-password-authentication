@@ -43,7 +43,7 @@ function Register() {
           <button className="bottom-button">Register</button>
         </div>
       </div>
-      <img class="bg-img" src={background} alt="" />
+      <img className="bg-img" src={background} alt="" />
     </div>
   );
 }

@@ -232,3 +232,7 @@ input:focus:-ms-input-placeholder {
   width: 400px;
   height: 100%;
 }
+
+.set {
+  margin-bottom: 20px;
+}
