@@ -4,10 +4,8 @@ import background from "./asset/img/background.jpg";
 import "./App.css";
 import { useState } from "react";
 function ForgotPass() {
-  const [email, setEmail] = useState("");
-  const isExist = (email) => {
-    return true;
-  }
+
+    
   return (
     <div className="container">
       <div className="top">

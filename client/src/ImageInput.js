@@ -233,27 +233,6 @@ function shuffle(array) {
 }
 
 function ImageInput(isLogin) {
-  const [selectedFile, setSelectedFile] = useState();
-
-  const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-  const handleSubmission = () => {
-    const formData = new FormData();
-    formData.append("File", selectedFile);
-    fetch(" to mongo db ", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("Success:", result);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-    console.log(imageList);
-  };
 
   var isLogin = isLogin;
   var hashValue = [];
@@ -268,20 +247,6 @@ function ImageInput(isLogin) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
   ]);
   shuffle(imageList);
-
-  useEffect(() => {
-    const image_input = document.querySelector("#image-input");
-    var uploaded_image;
-
-    image_input.addEventListener("change", function () {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        uploaded_image = reader.result;
-        setImageList([uploaded_image]);
-      });
-      reader.readAsDataURL(this.files[0]);
-    });
-  }, []);
 
   return (
     <div className="ImageInput">
@@ -303,7 +268,6 @@ function ImageInput(isLogin) {
                   type="file"
                   name="file"
                   accept="image/gif, image/jpeg, image/png"
-                  onChange={changeHandler}
                 />
                 <img
                   src="https://ytexpert.net/wp-content/uploads/2019/10/The-Best-Way-To-Upload-Videos-To-YouTube.png"
@@ -364,7 +328,6 @@ function ImageInput(isLogin) {
                 }
                 console.log(SHA256(hash));
                 console.log(indivisualImageList);
-                handleSubmission();
               }}
               className="bottom-button"
             >

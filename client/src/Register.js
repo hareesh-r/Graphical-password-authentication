@@ -3,6 +3,7 @@ import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function Register() {
   const [email, setEmail] = useState("");
   const isExist = (email) => {
@@ -61,22 +62,24 @@ function Register() {
       </div>
       <div className="bottom">
         <div className="bottom-button-grp flex">
-          <button
+          <Link to='/ImageInput'><button
             onClick={() => {
               console.log(email);
               if (isExist(email)) {
                 var element = document.getElementById("warn");
                 element.classList.remove("hidden");
                 element.classList.add("visible");
+              }else{
+
               }
             }}
             className="bottom-button"
           >
             Register
-          </button>
+          </button></Link>
         </div>
         <div className="bottom-text">
-          Already a user ? <a href="http://localhost:3000/Login">Login</a>
+          Already a user ? <Link to='/Login'>Login</Link>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />

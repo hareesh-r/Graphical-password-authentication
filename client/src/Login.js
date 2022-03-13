@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -61,7 +62,8 @@ function Login() {
       <div className="bottom">
         <div className="bottom-button-grp flex">
           <a href="http://localhost:3000/Register"><button className="bottom-button">Don't have an account ?</button></a>
-          <button onClick={()=>console.log(email)} className="bottom-button">Sign in</button>
+           <Link to="/ImageInputLogin"><button onClick={()=>console.log(email)} className="bottom-button">
+           Sign in</button></Link>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />
