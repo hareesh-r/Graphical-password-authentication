@@ -1,10 +1,7 @@
 import React from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
-import { useState } from "react";
 import background from "./asset/img/background.jpg";
-import { BrowserRouter as Link } from "react-router-dom";
-import { useEffect } from "react";
 
 function SHA256(s) {
   var chrsz = 8;
@@ -234,9 +231,10 @@ function shuffle(array) {
   return array;
 }
 
-function ImageInput() {
+function ImageInput(isLogin) {
+  console.log(isLogin);
   var value = 0;
-  var hashValue = "";
+  var hashValue = [];
   var imageList = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_OEOKvq4FqE1ixXabz_0KA55kNp0NtYcfqw&usqp=CAU",
@@ -267,10 +265,19 @@ function ImageInput() {
                 key={index}
                 id={index}
                 onClick={() => {
-                  hashValue += SHA256(image) + value++;
-                  console.log(hashValue);
-                  var element = document.getElementById(index);
-                  element.classList.add("selected");
+                  if (
+                    document
+                      .getElementById(index)
+                      .classList.contains("selected")
+                  ) {
+                    var element = document.getElementById(index);
+                    element.classList.remove("selected");
+                    hashValue.pop(index);
+                  } else {
+                    var element = document.getElementById(index);
+                    element.classList.add("selected");
+                    hashValue.push(SHA256(image));
+                  }
                 }}
                 className="password-image"
               >
@@ -281,7 +288,14 @@ function ImageInput() {
         </div>
         <div className="set bottom">
           <div className="bottom-button-grp flex">
-            <button onClick={()=>{console.log(SHA256(hashValue))}} className="bottom-button">Set</button>
+            <button
+              onClick={() => {
+                console.log(SHA256(hashValue.toString()));
+              }}
+              className="bottom-button"
+            >
+              Submit
+            </button>
           </div>
         </div>
         <img className="bg-img" src={background} alt="" />

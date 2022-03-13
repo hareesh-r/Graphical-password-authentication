@@ -30,6 +30,7 @@ function App() {
         </Link>
         <Link to="/Register">Register</Link>
         <Link to="/ImageInput">ImageInput</Link>
+        <Link to="/ImageInputLogin">Image Input for Login</Link>
         <Link to="/PasswordSet">PasswordSet</Link>
         <Link to="/Login">Login</Link>
         <Switch>
@@ -40,7 +41,10 @@ function App() {
             <Register />
           </Route>
           <Route path="/ImageInput">
-            <ImageInput />
+            <ImageInput isLogin={false} />
+          </Route>
+          <Route path="/ImageInputLogin">
+            <ImageInput isLogin={true} />
           </Route>
           <Route path="/PasswordSet">
             <PasswordSet />
