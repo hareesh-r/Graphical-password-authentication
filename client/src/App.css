@@ -42,7 +42,7 @@
 }
 
 .container {
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
   width: 450px;
@@ -210,10 +210,20 @@ input:focus:-ms-input-placeholder {
 }
 
 .image-container {
+  overflow-y: scroll;
+  height: 350px;
   margin: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.image-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.image-container::-webkit-scrollbar-thumb {
+  background: #56BBEF;
 }
 
 .selected {
@@ -233,7 +243,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .gif img {
-  width: 400px;
+  width: 250px;
   height: 100%;
 }
 
@@ -272,5 +282,36 @@ input:focus:-ms-input-placeholder {
   right: 0;
   width: 30px;
   height: 30px;
+  cursor: pointer;
+}
+
+.warning {
+  color: #EE1414;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #1B47E2;
+  transition: ease-in-out;
+}
+
+.successful {
+  margin-top: -80px;
+}
+
+.send-link , .send-link a{
+  text-decoration: none;
+  text-align: center;
+  margin-top: -270px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px;
+  color: #5AB9EA;
+}
+
+.send-link a{
+  color: #1B47E2;
   cursor: pointer;
 }

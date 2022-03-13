@@ -2,7 +2,12 @@ import React from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
+import { useState } from "react";
 function Register() {
+  const [email, setEmail] = useState("");
+  const isExist = (email) => {
+    return true;
+  }
   return (
     <div className="container">
       <div className="top">
@@ -33,6 +38,7 @@ function Register() {
             type="text"
             placeholder="Email"
             onChange={(e) => {
+              setEmail(e.target.value);
               if (e.target.value == "") {
                 var element = document.getElementById("toggle2");
                 element.classList.add("hidden");
@@ -50,17 +56,27 @@ function Register() {
               }
             }}
           />
-          <div className="forgot-password">
-            <a href="">Forgot Password ?</a>
-          </div>
+          <div id="warn" className="hidden warning">Email already exist !!</div>
         </div>
       </div>
       <div className="bottom">
         <div className="bottom-button-grp flex">
-          <button className="bottom-button">Register</button>
+          <button
+            onClick={() => {
+              console.log(email);
+              if (isExist(email)) {
+                var element = document.getElementById("warn");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
+              }
+            }}
+            className="bottom-button"
+          >
+            Register
+          </button>
         </div>
         <div className="bottom-text">
-          Already a user ? <a href="">Login</a>
+          Already a user ? <a href="http://localhost:3000/Login">Login</a>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />

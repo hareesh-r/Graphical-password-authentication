@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
+import lock from "./asset/img/newlock.gif";
 function PasswordSet() {
   return (
     <div className="PasswordSet">
@@ -17,11 +18,11 @@ function PasswordSet() {
         <div className="gif center flex">
           <img
             loop={false}
-            src="https://c.tenor.com/WRr_Vp2DKP8AAAAi/minion.gif"
+            src={lock}
             alt=""
           />
         </div>
-        <div className="bottom-text">
+        <div className="bottom-text successful">
           Your password has been successfully saved
         </div>
         <img className="bg-img" src={background} alt="" />

@@ -232,7 +232,7 @@ function shuffle(array) {
   return array;
 }
 
-function ImageInput(isLogin) {
+function ImageInput(isLogin,title) {
   var isLogin = isLogin;
   var hashValue = [];
   var indivisualImageList = [];
@@ -244,6 +244,7 @@ function ImageInput(isLogin) {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqix0CX9nSAsGEyCUAmrIm6iXDLJF5ek9PrA&usqp=CAU",
   ];
   shuffle(imageList);
 
@@ -255,33 +256,13 @@ function ImageInput(isLogin) {
             <img src={logo} alt="" />
           </div>
           <div className="login-title">
-            <h1>Enter your Password</h1>
+            <h1>Confrim Password</h1>
           </div>
         </div>
         <div className="center">
           <div className="image-container">
-            {!isLogin.isLogin && (
-              <label className="password-image">
-                <input type="file" />
-                <img
-                  src="https://ytexpert.net/wp-content/uploads/2019/10/The-Best-Way-To-Upload-Videos-To-YouTube.png"
-                  alt=""
-                />
-              </label>
-            )}
             {imageList.map((image, index) => (
               <div key={index} id={index} className="password-image">
-                {!isLogin.isLogin && (
-                  <img
-                    onClick={() => {
-                      var element = document.getElementById(index);
-                      element.classList.add("hidden");
-                    }}
-                    className="delete-icon"
-                    src={deleteImage}
-                    alt=""
-                  />
-                )}
                 <img
                   onClick={() => {
                     if (
@@ -325,7 +306,7 @@ function ImageInput(isLogin) {
               }}
               className="bottom-button"
             >
-              {isLogin.isLogin ? "Login" : "Set"}
+              Confrim
             </button>
           </div>
         </div>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
 
 function Login() {
+  const [email, setEmail] = useState("");
   return (
     <div className="container">
       <div className="top">
@@ -34,6 +35,7 @@ function Login() {
             type="text"
             placeholder="Email"
             onChange={(e) => {
+              setEmail(e.target.value)
               if (e.target.value == "") {
                 var element = document.getElementById("toggle");
                 element.classList.add("hidden");
@@ -59,7 +61,7 @@ function Login() {
       <div className="bottom">
         <div className="bottom-button-grp flex">
           <button className="bottom-button">Don't have an account ?</button>
-          <button className="bottom-button">Sign in</button>
+          <button onClick={()=>console.log(email)} className="bottom-button">Sign in</button>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />

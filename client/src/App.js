@@ -4,6 +4,8 @@ import ImageInput from "./ImageInput";
 import Login from "./Login";
 import PasswordSet from "./PasswordSet";
 import Register from "./Register";
+import ConfrimPass from "./ConfrimPass";
+import ForgotPass from "./ForgotPass";
 
 function App() {
   var theTop = (window.screen.height / 2 - 600 / 2) / 2;
@@ -36,6 +38,8 @@ function App() {
         <Link to="/ImageInputLogin">Image Input for Login</Link>
         <Link to="/PasswordSet">PasswordSet</Link>
         <Link to="/Login">Login</Link>
+        <Link to="/Confrim">Confrim Password</Link>
+        <Link to="/Forgot">Forgot Password</Link>
         <Switch>
           <Route path="/Login">
             <Login />
@@ -51,6 +55,12 @@ function App() {
           </Route>
           <Route path="/PasswordSet">
             <PasswordSet />
+          </Route>
+          <Route path="/Confrim">
+            <ConfrimPass />
+          </Route>
+          <Route path="/Forgot">
+            <ForgotPass />
           </Route>
         </Switch>
       </Router>
