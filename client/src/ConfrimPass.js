@@ -305,12 +305,13 @@ function ConfrimPass({ prop }) {
                 hash = SHA256(hash);
                 console.log(hash);
                 console.log(indivisualImageList);
-
                 console.log(prop);
                 if (hash != prop) {
                   var element = document.getElementById("warn");
                   element.classList.remove("hidden");
                   element.classList.add("visible");
+                }else{
+                    window.location.href = "/";
                 }
               }}
               className="bottom-button"

@@ -6,6 +6,8 @@ import PasswordSet from "./PasswordSet";
 import Register from "./Register";
 import ConfrimPass from "./ConfrimPass";
 import ForgotPass from "./ForgotPass";
+import Home from "./Home";
+import Success from "./Success";
 
 function App() {
   // var theTop = (window.screen.height / 2 - 600 / 2) / 2;
@@ -33,13 +35,14 @@ function App() {
             Login
           </button> */}
         </Link>
-        <Link to="/Register">Register</Link>
+        {/* <Link to="/Register">Register</Link>
         <Link to="/ImageInput">ImageInput</Link>
         <Link to="/ImageInputLogin">Image Input for Login</Link>
         <Link to="/PasswordSet">PasswordSet</Link>
         <Link to="/Login">Login</Link>
         <Link to="/Confrim">Confrim Password</Link>
         <Link to="/Forgot">Forgot Password</Link>
+        <Link to="/">Home Page</Link> */}
         <Switch>
           <Route path="/Login">
             <Login />
@@ -57,10 +60,20 @@ function App() {
             <PasswordSet />
           </Route>
           <Route path="/Confrim">
-            <ConfrimPass prop={"hashHere"} />
+            <ConfrimPass
+              prop={
+                "9a63b5369d7e691754af0266073a013fc05ee40fac8e58eb22ab5c7c355c7f96"
+              }
+            />
           </Route>
           <Route path="/Forgot">
             <ForgotPass />
+          </Route>
+          <Route path="/Success">
+            <Success />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </Router>

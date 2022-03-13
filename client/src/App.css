@@ -318,3 +318,68 @@ button:hover {
   color: #1B47E2;
   cursor: pointer;
 }
+
+.Home {
+  background: url(./asset/img/home-bg.jpg);
+  width: 100vw;
+  height: 100vh;
+}
+
+.Home .top {
+  background-color: #000;
+  color: #fff;
+  width: 100vw;
+  top: 0px;
+  position: absolute;
+  border-radius: 0px;
+}
+
+.Home .top h1 {
+  text-align: center;
+}
+
+.black-button {
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  width: 132px;
+  height: 34px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.black-button:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+#toggle5 {
+  width: 86px;
+}
+
+.lineleft,
+.lineright {
+  height: 3px;
+  width: 150px;
+  background-color: #000;
+}
+
+.row {
+  flex-direction: row;
+  margin: 20px;
+  color: #fff;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.Success {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 47px;
+  color: #FFFFFF;
+}
