@@ -15,7 +15,8 @@ function PasswordSet() {
           </div>
         </div>
         <div className="gif center flex">
-          <img loop={false} src="https://cdn.dribbble.com/users/2185205/screenshots/7886140/02-lottie-tick-01-instant-2.gif" alt="" />
+        {/* https://cdn.dribbble.com/users/2185205/screenshots/7886140/02-lottie-tick-01-instant-2.gif */}
+          <img loop={false} src="https://media.giphy.com/media/MCtyDN245YrlidibEi/giphy.gif" alt="" />
         </div>
         <img class="bg-img" src={background} alt="" />
       </div>

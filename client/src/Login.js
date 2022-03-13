@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -42,7 +43,7 @@ function Login() {
       <div className="bottom">
         <div className="bottom-button-grp flex">
               <button className="bottom-button">Don't have an account ?</button>
-              <button className="bottom-button">I'm already here</button>
+              <button className="bottom-button">Sign in</button>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />
