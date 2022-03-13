@@ -54,7 +54,7 @@ function Login() {
             }}
           />
           <div className="forgot-password">
-            <a href="">Forgot Password ?</a>
+            <a href="http://localhost:3000/Forgot">Forgot Password ?</a>
           </div>
         </div>
       </div>
