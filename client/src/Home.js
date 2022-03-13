@@ -3,6 +3,14 @@ import logo from "./asset/img/logo.png";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const Home = () => {
+     var theTop = (window.screen.height / 2 - 600 / 2) / 2;
+  var theLeft = window.screen.width / 2 - 800 / 2;
+  var features =
+    "height=600,width=490,top=" +
+    theTop +
+    ",left=" +
+    theLeft +
+    ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,scrollbars=false,resizable=0";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -101,11 +109,17 @@ const Home = () => {
           or
           <div className="lineright"></div>
         </div>
-        <Link to="/login">
-          <abbr className="flex pointer" title="Sign in with WIP">
+        {/* <Link to="/login"> */}
+          <abbr onClick={() => {
+              window.open(
+                "http://localhost:3000/Login",
+                "Login",
+                features
+              );
+            }} className="flex pointer" title="Sign in with WIP">
             <img src={logo} alt="" />
           </abbr>
-        </Link>
+        {/* </Link> */}
       </div>
     </div>
   );
