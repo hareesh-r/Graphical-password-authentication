@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function Register() {
   const [email, setEmail] = useState("");
   const isExist = (email) => {
+    // request to api and check if email exist or not 
     return true;
   }
   return (
@@ -70,7 +71,7 @@ function Register() {
                 element.classList.remove("hidden");
                 element.classList.add("visible");
               }else{
-
+                
               }
             }}
             className="bottom-button"

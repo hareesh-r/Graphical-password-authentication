@@ -33,10 +33,10 @@ function Login() {
                 element.classList.add("visible");
               }
             }}
-            type="text"
+            type="email"
             placeholder="Email"
             onChange={(e) => {
-              setEmail(e.target.value)
+              setEmail(e.target.value);
               if (e.target.value == "") {
                 var element = document.getElementById("toggle");
                 element.classList.add("hidden");
@@ -61,9 +61,17 @@ function Login() {
       </div>
       <div className="bottom">
         <div className="bottom-button-grp flex">
-          <a href="http://localhost:3000/Register"><button className="bottom-button">Don't have an account ?</button></a>
-           <Link to="/ImageInputLogin"><button onClick={()=>console.log(email)} className="bottom-button">
-           Sign in</button></Link>
+          <Link to="Register">
+            <button className="bottom-button">Don't have an account ?</button>
+          </Link>
+          <Link to="/ImageInputLogin">
+            <button
+              onClick={() => console.log(email)}
+              className="bottom-button"
+            >
+              Sign in
+            </button>
+          </Link>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />

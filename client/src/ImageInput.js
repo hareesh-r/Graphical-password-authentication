@@ -248,6 +248,17 @@ function ImageInput(isLogin) {
   ]);
   shuffle(imageList);
 
+  const handleChange = (e) => {
+    let files = e.target.files;
+    console.warn(files);
+    let reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (e) => {
+      console.warn(e.target.result);
+      setImageList([...imageList, e.target.result]);
+    }
+  }
+
   return (
     <div className="ImageInput">
       <div className="container">
@@ -268,6 +279,9 @@ function ImageInput(isLogin) {
                   type="file"
                   name="file"
                   accept="image/gif, image/jpeg, image/png"
+                  onChange={(e) => {
+                    handleChange(e)
+                  }}
                 />
                 <img
                   src="https://ytexpert.net/wp-content/uploads/2019/10/The-Best-Way-To-Upload-Videos-To-YouTube.png"

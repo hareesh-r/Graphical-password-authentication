@@ -240,6 +240,7 @@ input:focus:-ms-input-placeholder {
 
 .password-image img {
   object-fit: cover;
+  cursor: pointer;
 }
 
 .gif img {
@@ -300,7 +301,8 @@ button:hover {
   margin-top: -80px;
 }
 
-.send-link , .send-link a{
+.send-link,
+.send-link a {
   text-decoration: none;
   text-align: center;
   margin-top: -270px;
@@ -312,7 +314,7 @@ button:hover {
   color: #5AB9EA;
 }
 
-.send-link a{
+.send-link a {
   color: #1B47E2;
   cursor: pointer;
 }

@@ -8,19 +8,19 @@ import ConfrimPass from "./ConfrimPass";
 import ForgotPass from "./ForgotPass";
 
 function App() {
-  var theTop = (window.screen.height / 2 - 600 / 2) / 2;
-  var theLeft = window.screen.width / 2 - 800 / 2;
-  var features =
-    "height=500,width=460,top=" +
-    theTop +
-    ",left=" +
-    theLeft +
-    ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,scrollbars=false,resizable=0";
+  // var theTop = (window.screen.height / 2 - 600 / 2) / 2;
+  // var theLeft = window.screen.width / 2 - 800 / 2;
+  // var features =
+  //   "height=500,width=460,top=" +
+  //   theTop +
+  //   ",left=" +
+  //   theLeft +
+  //   ",toolbar=1,Location=0,Directories=0,Status=0,menubar=1,scrollbars=false,resizable=0";
   return (
     <div className="App">
       <Router>
         <Link to="/Login">
-          <button
+          {/* <button
             className="login-button"
             onClick={() => {
               window.open(
@@ -31,7 +31,7 @@ function App() {
             }}
           >
             Login
-          </button>
+          </button> */}
         </Link>
         <Link to="/Register">Register</Link>
         <Link to="/ImageInput">ImageInput</Link>
@@ -57,7 +57,7 @@ function App() {
             <PasswordSet />
           </Route>
           <Route path="/Confrim">
-            <ConfrimPass prop={"hashHere"}/>
+            <ConfrimPass prop={"hashHere"} />
           </Route>
           <Route path="/Forgot">
             <ForgotPass />
