@@ -4,7 +4,7 @@ import "./App.css";
 import background from "./asset/img/background.jpg";
 import { UserContext } from "./App";
 import axios from "axios";
-const qs  = require('qs');
+const qs = require("qs");
 
 function SHA256(s) {
   var chrsz = 8;
@@ -303,15 +303,16 @@ function ImageInputLogin() {
                 setPasswordHash(SHA256(hash));
                 console.log(currenthashvalue);
 
-                axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-              axios
-                .get(`http://localhost:5000/user/${email}/data`)
-                .then((res) => {
-                  if(res.data.password === currenthashvalue){
-                    window.opener.location.href = `http://localhost:3000/Success`;
-                   window.close();
-                  }
-                });
+                axios.defaults.headers.post["Access-Control-Allow-Origin"] =
+                  "*";
+                axios
+                  .get(`http://localhost:5000/user/${email}/data`)
+                  .then((res) => {
+                    if (res.data.password === currenthashvalue) {
+                      window.opener.location.href = `http://localhost:3000/Success`;
+                      window.close();
+                    }
+                  });
               }}
               className="bottom-button"
             >
