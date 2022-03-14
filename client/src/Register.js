@@ -9,7 +9,6 @@ function Register() {
   const { email, setEmail } = useContext(UserContext);
   const { passwordhash, setPasswordHash } = useContext(UserContext);
 
-
   return (
     <div className="container">
       <div className="top">
@@ -64,8 +63,7 @@ function Register() {
         </div>
       </div>
       <div className="bottom">
-        <div className="bottom-button-grp flex">
-          {/* <Link to="/ImageInputRegister"> */}
+        <div className="bottom-button-grp flex abs-center">
           <button
             onClick={() => {
               let status = "dummy";
@@ -83,7 +81,7 @@ function Register() {
                     var element = document.getElementById("next");
                     element.classList.remove("hidden");
                     element.classList.add("visible");
-                    // window.location.href = "/ImageInputRegister";
+                    document.getElementById("next").click();
                   }
                 });
               if (!status) {
@@ -97,10 +95,11 @@ function Register() {
           >
             Register
           </button>
-          <button id="next" className="bottom-button hidden">
-            <Link to="/ImageInputRegister">Next</Link>
-          </button>
-          {/* </Link> */}
+          <Link to="/ImageInputRegister">
+            <button id="next" className="bottom-button hidden">
+              Next
+            </button>
+          </Link>
         </div>
         <div className="bottom-text">
           Already a user ? <Link to="/Login">Login</Link>

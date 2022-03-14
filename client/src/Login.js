@@ -66,7 +66,7 @@ function Login() {
         </div>
       </div>
       <div className="bottom">
-        <div className="bottom-button-grp flex">
+        <div className="bottom-button-grp flex abs-center">
           <Link to="Register">
             <button className="bottom-button">Don't have an account ?</button>
           </Link>
@@ -77,7 +77,7 @@ function Login() {
               axios
                 .get(`http://localhost:5000/user/${email}/data`)
                 .then((res) => {
-                  setImageList(res.data.listOfImageURL)
+                  setImageList(res.data.listOfImageURL);
                   status = res.data?.status;
                   status = status === 666 ? false : true;
                   if (!status) {
@@ -88,7 +88,7 @@ function Login() {
                     var element = document.getElementById("next1");
                     element.classList.remove("hidden");
                     element.classList.add("visible");
-                    // window.location.href = "/ImageInputLogin";
+                    document.getElementById("next1").click();
                   }
                 });
             }}
@@ -96,9 +96,11 @@ function Login() {
           >
             Sign in
           </button>
-          <button id="next1" className="bottom-button hidden">
-            <Link to="/ImageInputLogin">Next</Link>
-          </button>
+          <Link to="/ImageInputLogin">
+            <button id="next1" className="bottom-button hidden">
+              Next
+            </button>
+          </Link>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />

@@ -164,6 +164,7 @@ input:focus:-ms-input-placeholder {
   letter-spacing: 0em;
   text-align: center;
   border: none;
+  margin: 15px;
 }
 
 .hidden {
@@ -382,4 +383,8 @@ button:hover {
   font-size: 40px;
   line-height: 47px;
   color: #FFFFFF;
+}
+
+.abs-center {
+  justify-content: center;
 }
