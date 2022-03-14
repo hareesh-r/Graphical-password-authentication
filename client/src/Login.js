@@ -69,10 +69,11 @@ function Login() {
           </Link>
           <Link to="/ImageInputLogin">
             <button
-              onClick={() => {console.log(email)
+              onClick={() => {
+                axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
                 axios.get(`http://localhost:5000/user/${email}/data`).then((res) => {
                   console.log(res.data);
-                })
+                });
               }
               }
               className="bottom-button"
