@@ -21,11 +21,40 @@ const userSchema = new mongoose.Schema({
 
 const users = new mongoose.model("users",userSchema);
 
-app.get("/",function(req,res){
-  res.send("<h1>Hello</h1>");
+app.get("/user/:email/check",function(req,res){
+  users.findOne({email : req.params.email},function(err,docs){
+    if(err)
+    {
+      res.send(err);
+    }
+    else{
+      if(!docs)
+      {
+        res.send({status:false});
+      }
+      else
+      {
+        res.send({status : true});
+      }
+    }
+  });
 });
 
 app.post("/register",function(req,res){
+  const user = new users({email : req.body.mail,password : req.body.password,listOfImageURL : req.body.url});
+  user.save(function(err){
+    if(err)
+    {
+      res.send({status : false});
+    }
+    else{
+      res.send({status : true})
+    }
+  });
+
+});
+
+app.get("/user/:email/data",function(req,res){
   const defaultURLs = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_OEOKvq4FqE1ixXabz_0KA55kNp0NtYcfqw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh6oPIzWAVL6bJTbPZ4N2paZ1xpqti-QRj7g&usqp=CAU",
@@ -34,12 +63,6 @@ app.post("/register",function(req,res){
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU"];
 
-  const user = new users({email : req.body.mail,password : req.body.password,listOfImageURL : defaultURLs+req.body.url});
-  user.save();
-});
-
-app.get("/user/:email/data",function(req,res){
-  res.send({message : "Dinesh is a fucker"});
   users.findOne({email : req.params.email},function(err,docs){
     if(err)
     {
