@@ -41,6 +41,7 @@ const users = new mongoose.model("users",userSchema);
 // });
 
 app.post("/register",function(req,res){
+  console.log(req.body);
   const user = new users({email : req.body.mail,password : req.body.password,listOfImageURL : req.body.url});
   user.save(function(err){
     if(err)
@@ -55,7 +56,8 @@ app.post("/register",function(req,res){
 });
 
 app.get("/user/:email/data",function(req,res){
-  const defaultURLs = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
+  const defaultURLs = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_OEOKvq4FqE1ixXabz_0KA55kNp0NtYcfqw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh6oPIzWAVL6bJTbPZ4N2paZ1xpqti-QRj7g&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjYFV-bwRLTx5vbXeIRyRZDH86KNG-4ktGcg&usqp=CAU",
@@ -83,7 +85,7 @@ app.get("/user/:email/data",function(req,res){
             docs.listOfImageURL.push(defaultURLs[ind]);
           }
         }
-
+        console.log(docs)
         res.send(docs)
       }
       else
