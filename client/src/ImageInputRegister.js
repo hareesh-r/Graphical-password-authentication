@@ -337,10 +337,6 @@ function ImageInputRegister(isLogin) {
                   indivisualImageList.push(key.toString());
                 }
                 let currenthashvalue = SHA256(hash);
-                console.log(email);
-                console.log(currenthashvalue);
-                console.log(indivisualImageList);
-
                 axios.defaults.headers.post["Access-Control-Allow-Origin"] =
                   "*";
                 axios
@@ -353,7 +349,6 @@ function ImageInputRegister(isLogin) {
                       'Content-Type': 'application/x-www-form-urlencoded',
                     }})
                   .then(function (response) {
-                    console.log(response);
                     if(response.data.status==true){
                       window.location.href = `http://localhost:3000/Login`;
                     }
@@ -361,13 +356,6 @@ function ImageInputRegister(isLogin) {
                   .catch(function (error) {
                     console.log(error);
                   });
-
-                // if (!isLogin.isLogin && res.data?.status) {
-                //    window.location.href = `http://localhost:3000/Login`;
-                // } else {
-                //    window.opener.location.href = `http://localhost:3000/Success`;
-                //    window.close();
-                // }
               }}
               className="bottom-button"
             >

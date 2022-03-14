@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const Home = () => {
      var theTop = (window.screen.height / 2 - 600 / 2) / 2;
   var theLeft = window.screen.width / 2 - 800 / 2;
@@ -100,8 +99,6 @@ const Home = () => {
               if(email=="sih@gmail.com" && password=="sih@123"){
                   window.location.href="/Success";
               }
-              console.log(email);
-                console.log(password);
           }} className="black-button">Sign In</button>
         </div>
         <div className="row flex">
@@ -109,7 +106,6 @@ const Home = () => {
           or
           <div className="lineright"></div>
         </div>
-        {/* <Link to="/login"> */}
           <abbr onClick={() => {
               window.open(
                 "http://localhost:3000/Login",
@@ -119,7 +115,6 @@ const Home = () => {
             }} className="flex pointer" title="Sign in with WIP">
             <img src={logo} alt="" />
           </abbr>
-        {/* </Link> */}
       </div>
     </div>
   );

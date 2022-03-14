@@ -77,7 +77,6 @@ function Login() {
               axios
                 .get(`http://localhost:5000/user/${email}/data`)
                 .then((res) => {
-                  console.log(res.data);
                   setImageList(res.data.listOfImageURL)
                   status = res.data?.status;
                   status = status === 666 ? false : true;

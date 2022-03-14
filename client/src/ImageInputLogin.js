@@ -298,10 +298,7 @@ function ImageInputLogin() {
                   indivisualImageList.push(key);
                 }
                 let currenthashvalue = SHA256(hash);
-                console.log(indivisualImageList);
-                console.log(email);
                 setPasswordHash(SHA256(hash));
-                console.log(currenthashvalue);
 
                 axios.defaults.headers.post["Access-Control-Allow-Origin"] =
                   "*";

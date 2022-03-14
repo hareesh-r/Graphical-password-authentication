@@ -68,7 +68,6 @@ function Register() {
           {/* <Link to="/ImageInputRegister"> */}
           <button
             onClick={() => {
-              console.log(email);
               let status = "dummy";
               axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
               axios
