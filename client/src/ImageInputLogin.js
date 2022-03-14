@@ -319,6 +319,11 @@ function ImageInputLogin() {
                     if (res.data.password === currenthashvalue) {
                       window.opener.location.href = `http://localhost:3000/Success`;
                       window.close();
+                    }else{
+                        imageList.map((image, index) => {
+                            document.getElementById(index).classList.remove("selected");
+                          });
+                          indivisualImageList = [];
                     }
                   });
               }}
