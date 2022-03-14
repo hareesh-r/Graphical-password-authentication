@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
 import deleteImage from "./asset/img/delete.svg";
+import { UserContext } from "./App";
 
 
 function SHA256(s) {
@@ -234,7 +235,8 @@ function shuffle(array) {
 }
 
 function ImageInput(isLogin) {
-
+  const { email, setEmail } = useContext(UserContext);
+  const { passwordhash, setPasswordHash } = useContext(UserContext);
   var isLogin = isLogin;
   var hashValue = [];
   var indivisualImageList = [];
@@ -345,8 +347,11 @@ function ImageInput(isLogin) {
                 }
                 console.log(SHA256(hash));
                 console.log(indivisualImageList);
-                window.opener.location.href=`http://localhost:3000/Success`;
-                window.close();
+                console.log(email);
+                setPasswordHash(SHA256(hash));
+                console.log(passwordhash)
+                // window.opener.location.href=`http://localhost:3000/Success`;
+                // window.close();
               }}
 
               className="bottom-button"

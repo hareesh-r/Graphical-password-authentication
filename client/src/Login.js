@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { UserContext } from "./App";
+import axios from 'axios';
 
 function Login() {
   const { email, setEmail } = useContext(UserContext);
@@ -68,7 +69,12 @@ function Login() {
           </Link>
           <Link to="/ImageInputLogin">
             <button
-              onClick={() => console.log(email)}
+              onClick={() => {console.log(email)
+                axios.get(`http://localhost:5000/user/${email}/data`).then((res) => {
+                  console.log(res.data);
+                })
+              }
+              }
               className="bottom-button"
             >
               Sign in

@@ -13,9 +13,9 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 function App() {
   const [email, setEmail] = useState("hello");
-
+  const [passwordhash, setPasswordHash] = useState("")
   return (
-    <UserContext.Provider value={{ email, setEmail }}>
+    <UserContext.Provider value={{ email, setEmail ,passwordhash,setPasswordHash}}>
       <div className="App">
         <Router>
           <Link to="/Login"></Link>
@@ -36,11 +36,7 @@ function App() {
               <PasswordSet />
             </Route>
             <Route path="/Confrim">
-              <ConfrimPass
-                prop={
-                  "9a63b5369d7e691754af0266073a013fc05ee40fac8e58eb22ab5c7c355c7f96"
-                }
-              />
+              <ConfrimPass />
             </Route>
             <Route path="/Forgot">
               <ForgotPass />
