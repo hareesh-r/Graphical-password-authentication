@@ -45,7 +45,7 @@ function Login() {
                 element.classList.add("hidden");
                 element.classList.remove("visible");
               } else {
-                var element = document.getElementById("toggle");
+                element = document.getElementById("toggle");
                 element.classList.remove("hidden");
                 element.classList.add("visible");
                 element = document.getElementById("toggle1");
