@@ -21,24 +21,24 @@ const userSchema = new mongoose.Schema({
 
 const users = new mongoose.model("users",userSchema);
 
-app.get("/user/:email/check",function(req,res){
-  users.findOne({email : req.params.email},function(err,docs){
-    if(err)
-    {
-      res.send(err);
-    }
-    else{
-      if(!docs)
-      {
-        res.send({status:false});
-      }
-      else
-      {
-        res.send({status : true});
-      }
-    }
-  });
-});
+// app.get("/user/:email/check",function(req,res){
+//   users.findOne({email : req.params.email},function(err,docs){
+//     if(err)
+//     {
+//       res.send(err);
+//     }
+//     else{
+//       if(!docs)
+//       {
+//         res.send({status:false});
+//       }
+//       else
+//       {
+//         res.send({status : true});
+//       }
+//     }
+//   });
+// });
 
 app.post("/register",function(req,res){
   const user = new users({email : req.body.mail,password : req.body.password,listOfImageURL : req.body.url});
@@ -61,7 +61,9 @@ app.get("/user/:email/data",function(req,res){
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjYFV-bwRLTx5vbXeIRyRZDH86KNG-4ktGcg&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU"];
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOd256TcC6vcaQ99TYzoP0pBbch9_Q-bbrmw&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJUDdTpf8NQuBtdrBgSKRtn7chovffMKPtiA&usqp=CAU"];
 
   users.findOne({email : req.params.email},function(err,docs){
     if(err)
@@ -72,6 +74,16 @@ app.get("/user/:email/data",function(req,res){
     {
       if(docs)
       {
+        while(docs.listOfImageURL.length < 9)
+        {
+          const ind = Math.floor(Math.random()*defaultURLs.length);
+
+          if(!docs.listOfImageURL.includes(defaultURLs[ind]))
+          {
+            docs.listOfImageURL.push(defaultURLs[ind]);
+          }
+        }
+
         res.send(docs)
       }
       else
