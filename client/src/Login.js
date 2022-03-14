@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
-import { BrowserRouter as  Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
+import { UserContext } from "./App";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const { email, setEmail } = useContext(UserContext);
+  console.log(email);
   return (
     <div className="container">
       <div className="top">
@@ -66,8 +68,7 @@ function Login() {
           </Link>
           <Link to="/ImageInputLogin">
             <button
-              onClick={() => console.log(email)
-              }
+              onClick={() => console.log(email)}
               className="bottom-button"
             >
               Sign in
