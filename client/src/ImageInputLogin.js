@@ -291,6 +291,17 @@ function ImageInputLogin() {
           <div className="bottom-button-grp flex">
             <button
               onClick={() => {
+                imageList.map((image, index) => {
+                  document.getElementById(index).classList.remove("selected");
+                });
+                indivisualImageList = [];
+              }}
+              className="bottom-button"
+            >
+              Reset
+            </button>
+            <button
+              onClick={() => {
                 var hash = "";
                 indivisualImageList = [];
                 for (const key in hashValue) {
