@@ -57,6 +57,9 @@ function Login() {
               }
             }}
           />
+          <div id="warn" className="hidden warning">
+            Email does not exist !!
+          </div>
           <div className="forgot-password">
             <Link to="/Forgot">Forgot Password ?</ Link>
           </div>
@@ -67,12 +70,20 @@ function Login() {
           <Link to="Register">
             <button className="bottom-button">Don't have an account ?</button>
           </Link>
-          <Link to="/ImageInputLogin">
             <button
               onClick={() => {
+                let status = "dummy"
                 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
                 axios.get(`http://localhost:5000/user/${email}/data`).then((res) => {
-                  console.log(res.data);
+                  status = res.data?.status;
+                  status =  ( status === 666 ) ? false : true;
+                  if (!status) {
+                    var element = document.getElementById("warn");
+                    element.classList.remove("hidden");
+                    element.classList.add("visible");
+                  } else {
+                    window.location.href = "/ImageInputLogin";
+                  }
                 });
               }
               }
@@ -80,7 +91,6 @@ function Login() {
             >
               Sign in
             </button>
-          </Link>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />
