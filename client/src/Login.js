@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as  Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ function Login() {
           </div>
           <input
             onClick={(e) => {
-              if (e.target.value == "") {
+              if (e.target.value === "") {
                 var element = document.getElementById("toggle");
                 element.classList.remove("hidden");
                 element.classList.add("visible");
@@ -37,7 +37,7 @@ function Login() {
             placeholder="Email"
             onChange={(e) => {
               setEmail(e.target.value);
-              if (e.target.value == "") {
+              if (e.target.value === "") {
                 var element = document.getElementById("toggle");
                 element.classList.add("hidden");
                 element.classList.remove("visible");

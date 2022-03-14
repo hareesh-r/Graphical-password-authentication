@@ -14,27 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Link to="/Login">
-          {/* <button
-            className="login-button"
-            onClick={() => {
-              window.open(
-                "http://localhost:3000/PasswordSet",
-                "Login",
-                features
-              );
-            }}
-          >
-            Login
-          </button> */}
         </Link>
-        {/* <Link to="/Register">Register</Link>
-        <Link to="/ImageInput">ImageInput</Link>
-        <Link to="/ImageInputLogin">Image Input for Login</Link>
-        <Link to="/PasswordSet">PasswordSet</Link>
-        <Link to="/Login">Login</Link>
-        <Link to="/Confrim">Confrim Password</Link>
-        <Link to="/Forgot">Forgot Password</Link>
-        <Link to="/">Home Page</Link> */}
         <Switch>
           <Route path="/Login">
             <Login />
