@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
-import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { UserContext } from "./App";
 import axios from "axios";
 function Register() {
   const { email, setEmail } = useContext(UserContext);
+  const { passwordhash, setPasswordHash } = useContext(UserContext);
+
 
   return (
     <div className="container">
@@ -64,46 +65,43 @@ function Register() {
       </div>
       <div className="bottom">
         <div className="bottom-button-grp flex">
-          <Link to="/ImageInput">
-            <button
-              onClick={() => {
-                console.log(email);
-                let status = "dummy";
-                axios.defaults.headers.post["Access-Control-Allow-Origin"] =
-                  "*";
-                axios
-                  .get(`http://localhost:5000/user/${email}/data`)
-                  .then((res) => {
-                    status = res.data?.status;
-                    status = status === 666 ? false : true;
-                    if (status) {
-                      var element = document.getElementById("warn2");
-                      element.classList.remove("hidden");
-                      element.classList.add("visible");
-                    } else {
-                      axios.defaults.headers.post[
-                        "Access-Control-Allow-Origin"
-                      ] = "*";
-                      axios.post(`http://localhost:5000/register`, {
-                        mail: "Fred",
-                        password: "Flintstone",
-                        url: "https://www.google.com/",
-                      });
-                      window.location.href = "/Login";
-                    }
-                  });
-                if (!status) {
-                  var element = document.getElementById("warn");
-                  element.classList.remove("hidden");
-                  element.classList.add("visible");
-                } else {
-                }
-              }}
-              className="bottom-button"
-            >
-              Register
-            </button>
-          </Link>
+          {/* <Link to="/ImageInputRegister"> */}
+          <button
+            onClick={() => {
+              console.log(email);
+              let status = "dummy";
+              axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+              axios
+                .get(`http://localhost:5000/user/${email}/data`)
+                .then((res) => {
+                  status = res.data?.status;
+                  status = status === 666 ? false : true;
+                  if (status) {
+                    var element = document.getElementById("warn2");
+                    element.classList.remove("hidden");
+                    element.classList.add("visible");
+                  } else {
+                    var element = document.getElementById("next");
+                    element.classList.remove("hidden");
+                    element.classList.add("visible");
+                    // window.location.href = "/ImageInputRegister";
+                  }
+                });
+              if (!status) {
+                var element = document.getElementById("warn");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
+              } else {
+              }
+            }}
+            className="bottom-button"
+          >
+            Register
+          </button>
+          <button id="next" className="bottom-button hidden">
+            <Link to="/ImageInputRegister">Next</Link>
+          </button>
+          {/* </Link> */}
         </div>
         <div className="bottom-text">
           Already a user ? <Link to="/Login">Login</Link>

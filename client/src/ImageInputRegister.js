@@ -4,7 +4,8 @@ import "./App.css";
 import background from "./asset/img/background.jpg";
 import deleteImage from "./asset/img/delete.svg";
 import { UserContext } from "./App";
-
+import axios from "axios";
+const qs = require('qs');
 
 function SHA256(s) {
   var chrsz = 8;
@@ -234,21 +235,12 @@ function shuffle(array) {
   return array;
 }
 
-function ImageInput(isLogin) {
+function ImageInputRegister(isLogin) {
   const { email, setEmail } = useContext(UserContext);
-  const { passwordhash, setPasswordHash } = useContext(UserContext);
-  var isLogin = isLogin;
+  const { imageList, setImageList } = useContext(UserContext);
+
   var hashValue = [];
   var indivisualImageList = [];
-  const [imageList, setImageList] = useState([
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtqK53mxBwu2kcvwtd2H2ubms89hv70sztZw&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_OEOKvq4FqE1ixXabz_0KA55kNp0NtYcfqw&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh6oPIzWAVL6bJTbPZ4N2paZ1xpqti-QRj7g&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjYFV-bwRLTx5vbXeIRyRZDH86KNG-4ktGcg&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDkvFCLSMbUU6Bqb1m-0y3LPAQ7_Gcs-PNZw&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnnnObTCNg1QJoEd9Krwl3kSUnPYTZrxb5Ig&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGyOXXirSyzE3dWNNqam3jtKlZGbxZx640Q&usqp=CAU",
-  ]);
 
   shuffle(imageList);
 
@@ -260,9 +252,8 @@ function ImageInput(isLogin) {
     reader.onload = (e) => {
       console.warn(e.target.result);
       setImageList([...imageList, e.target.result]);
-    }
-
-  }
+    };
+  };
 
   return (
     <div className="ImageInput">
@@ -285,7 +276,7 @@ function ImageInput(isLogin) {
                   name="file"
                   accept="image/gif, image/jpeg, image/png"
                   onChange={(e) => {
-                    handleChange(e)
+                    handleChange(e);
                   }}
                 />
                 <img
@@ -343,20 +334,44 @@ function ImageInput(isLogin) {
                 indivisualImageList = [];
                 for (const key in hashValue) {
                   hash += hashValue[key];
-                  indivisualImageList.push(key);
+                  indivisualImageList.push(key.toString());
                 }
-                console.log(SHA256(hash));
-                console.log(indivisualImageList);
+                let currenthashvalue = SHA256(hash);
                 console.log(email);
-                setPasswordHash(SHA256(hash));
-                console.log(passwordhash)
-                // window.opener.location.href=`http://localhost:3000/Success`;
-                // window.close();
-              }}
+                console.log(currenthashvalue);
+                console.log(indivisualImageList);
 
+                axios.defaults.headers.post["Access-Control-Allow-Origin"] =
+                  "*";
+                axios
+                  .post("http://localhost:5000/register", qs.stringify({
+                    mail: email,
+                    password: currenthashvalue,
+                    url: indivisualImageList,
+                  }) , {
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                    }})
+                  .then(function (response) {
+                    console.log(response);
+                    if(response.data.status==true){
+                      window.location.href = `http://localhost:3000/Login`;
+                    }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+
+                // if (!isLogin.isLogin && res.data?.status) {
+                //    window.location.href = `http://localhost:3000/Login`;
+                // } else {
+                //    window.opener.location.href = `http://localhost:3000/Success`;
+                //    window.close();
+                // }
+              }}
               className="bottom-button"
             >
-              {isLogin.isLogin ? "Login" : "Set"}
+              Set
             </button>
           </div>
         </div>
@@ -366,4 +381,4 @@ function ImageInput(isLogin) {
   );
 }
 
-export default ImageInput;
+export default ImageInputRegister;

@@ -4,11 +4,11 @@ import background from "./asset/img/background.jpg";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { UserContext } from "./App";
-import axios from 'axios';
+import axios from "axios";
 
 function Login() {
   const { email, setEmail } = useContext(UserContext);
-  console.log(email);
+  const { imageList, setImageList } = useContext(UserContext);
   return (
     <div className="container">
       <div className="top">
@@ -61,7 +61,7 @@ function Login() {
             Email does not exist !!
           </div>
           <div className="forgot-password">
-            <Link to="/Forgot">Forgot Password ?</ Link>
+            <Link to="/Forgot">Forgot Password ?</Link>
           </div>
         </div>
       </div>
@@ -70,27 +70,36 @@ function Login() {
           <Link to="Register">
             <button className="bottom-button">Don't have an account ?</button>
           </Link>
-            <button
-              onClick={() => {
-                let status = "dummy"
-                axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-                axios.get(`http://localhost:5000/user/${email}/data`).then((res) => {
+          <button
+            onClick={() => {
+              let status = "dummy";
+              axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+              axios
+                .get(`http://localhost:5000/user/${email}/data`)
+                .then((res) => {
+                  console.log(res.data);
+                  setImageList(res.data.listOfImageURL)
                   status = res.data?.status;
-                  status =  ( status === 666 ) ? false : true;
+                  status = status === 666 ? false : true;
                   if (!status) {
                     var element = document.getElementById("warn");
                     element.classList.remove("hidden");
                     element.classList.add("visible");
                   } else {
-                    window.location.href = "/ImageInputLogin";
+                    var element = document.getElementById("next1");
+                    element.classList.remove("hidden");
+                    element.classList.add("visible");
+                    // window.location.href = "/ImageInputLogin";
                   }
                 });
-              }
-              }
-              className="bottom-button"
-            >
-              Sign in
-            </button>
+            }}
+            className="bottom-button"
+          >
+            Sign in
+          </button>
+          <button id="next1" className="bottom-button hidden">
+            <Link to="/ImageInputLogin">Next</Link>
+          </button>
         </div>
       </div>
       <img className="bg-img" src={background} alt="" />
