@@ -388,3 +388,9 @@ button:hover {
 .abs-center {
   justify-content: center;
 }
+
+#warning1 {
+  text-align: center;
+  margin: 20px;
+  margin-top: -40px;
+}

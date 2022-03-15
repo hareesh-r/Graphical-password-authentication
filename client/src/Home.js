@@ -94,10 +94,17 @@ const Home = () => {
             }}
           />
         </div>
+        <div id="warning1" className="hidden">
+          Incorrect Password !!
+        </div>
         <div className="flex">
           <button onClick={()=>{
               if(email=="sih@gmail.com" && password=="sih@123"){
                   window.location.href="/Success";
+              }else if(password !== "sin@123"){
+                var element = document.getElementById("warning1");
+                element.classList.remove("hidden");
+                element.classList.add("visible");
               }
           }} className="black-button">Sign In</button>
         </div>
