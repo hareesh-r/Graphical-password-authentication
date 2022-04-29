@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
 import deleteImage from "./asset/img/delete.svg";
 import { UserContext } from "./App";
 import axios from "axios";
-const qs = require('qs');
+const qs = require("qs");
 
 function SHA256(s) {
   var chrsz = 8;
@@ -43,7 +43,7 @@ function SHA256(s) {
   }
 
   function core_sha256(m, l) {
-    var K = new Array(
+    var K = [
       0x428a2f98,
       0x71374491,
       0xb5c0fbcf,
@@ -108,8 +108,8 @@ function SHA256(s) {
       0xa4506ceb,
       0xbef9a3f7,
       0xc67178f2
-    );
-    var HASH = new Array(
+    ];
+    var HASH = [
       0x6a09e667,
       0xbb67ae85,
       0x3c6ef372,
@@ -118,7 +118,7 @@ function SHA256(s) {
       0x9b05688c,
       0x1f83d9ab,
       0x5be0cd19
-    );
+    ];
     var W = new Array(64);
     var a, b, c, d, e, f, g, h, i, j;
     var T1, T2;
@@ -224,7 +224,7 @@ function SHA256(s) {
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
     [array[currentIndex], array[randomIndex]] = [
@@ -309,7 +309,7 @@ function ImageInputRegister(isLogin) {
                       element.classList.remove("selected");
                       const currImage = image;
                       for (const key in hashValue) {
-                        if (key == currImage) {
+                        if (key === currImage) {
                           delete hashValue[key];
                         }
                       }
@@ -328,7 +328,7 @@ function ImageInputRegister(isLogin) {
         </div>
         <div className="set bottom">
           <div className="bottom-button-grp flex">
-          <button
+            <button
               onClick={() => {
                 imageList.map((image, index) => {
                   document.getElementById(index).classList.remove("selected");
@@ -351,16 +351,21 @@ function ImageInputRegister(isLogin) {
                 axios.defaults.headers.post["Access-Control-Allow-Origin"] =
                   "*";
                 axios
-                  .post("http://localhost:5000/register", qs.stringify({
-                    mail: email,
-                    password: currenthashvalue,
-                    url: indivisualImageList,
-                  }) , {
-                    headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded',
-                    }})
+                  .post(
+                    "http://localhost:5000/register",
+                    qs.stringify({
+                      mail: email,
+                      password: currenthashvalue,
+                      url: indivisualImageList,
+                    }),
+                    {
+                      headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                      },
+                    }
+                  )
                   .then(function (response) {
-                    if(response.data.status==true){
+                    if (response.data.status === true) {
                       window.location.href = `http://localhost:3000/Login`;
                     }
                   })

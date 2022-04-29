@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import logo from "./asset/img/logo.png";
 import background from "./asset/img/background.jpg";
 import "./App.css";
@@ -7,7 +7,6 @@ import { UserContext } from "./App";
 import axios from "axios";
 function Register() {
   const { email, setEmail } = useContext(UserContext);
-  const { passwordhash, setPasswordHash } = useContext(UserContext);
 
   return (
     <div className="container">
@@ -26,8 +25,18 @@ function Register() {
             Email
           </div>
           <input
+            onBlur={() => {
+              if (email === "") {
+                var element = document.getElementById("toggle2");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+                element = document.getElementById("toggle3");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+              }
+            }}
             onClick={(e) => {
-              if (e.target.value == "") {
+              if (e.target.value === "") {
                 var element = document.getElementById("toggle2");
                 element.classList.remove("hidden");
                 element.classList.add("visible");
@@ -40,7 +49,7 @@ function Register() {
             placeholder="Email"
             onChange={(e) => {
               setEmail(e.target.value);
-              if (e.target.value == "") {
+              if (e.target.value === "") {
                 var element = document.getElementById("toggle2");
                 element.classList.add("hidden");
                 element.classList.remove("visible");

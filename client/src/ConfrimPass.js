@@ -275,7 +275,7 @@ function ConfrimPass({ prop }) {
                       element.classList.remove("selected");
                       const currImage = image;
                       for (const key in hashValue) {
-                        if (key == currImage) {
+                        if (key === currImage) {
                           delete hashValue[key];
                         }
                       }
@@ -310,8 +310,8 @@ function ConfrimPass({ prop }) {
                   var element = document.getElementById("warn");
                   element.classList.remove("hidden");
                   element.classList.add("visible");
-                }else{
-                    window.location.href = "/";
+                } else {
+                  window.location.href = "/";
                 }
               }}
               className="bottom-button"

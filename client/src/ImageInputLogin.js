@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import logo from "./asset/img/logo.png";
 import "./App.css";
 import background from "./asset/img/background.jpg";
@@ -270,7 +270,7 @@ function ImageInputLogin() {
                       element.classList.remove("selected");
                       const currImage = image;
                       for (const key in hashValue) {
-                        if (key == currImage) {
+                        if (key === currImage) {
                           delete hashValue[key];
                         }
                       }
@@ -319,11 +319,13 @@ function ImageInputLogin() {
                     if (res.data.password === currenthashvalue) {
                       window.opener.location.href = `http://localhost:3000/Success`;
                       window.close();
-                    }else{
-                        imageList.map((image, index) => {
-                            document.getElementById(index).classList.remove("selected");
-                          });
-                          indivisualImageList = [];
+                    } else {
+                      imageList.map((image, index) => {
+                        document
+                          .getElementById(index)
+                          .classList.remove("selected");
+                      });
+                      indivisualImageList = [];
                     }
                   });
               }}

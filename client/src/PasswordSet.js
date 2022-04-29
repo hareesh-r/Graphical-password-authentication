@@ -16,11 +16,7 @@ function PasswordSet() {
           </div>
         </div>
         <div className="gif center flex">
-          <img
-            loop={false}
-            src={lock}
-            alt=""
-          />
+          <img loop={false} src={lock} alt="" />
         </div>
         <div className="bottom-text successful">
           Your password has been successfully saved !!

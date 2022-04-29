@@ -26,6 +26,16 @@ function Login() {
             Email
           </div>
           <input
+            onBlur={() => {
+              if (email === "") {
+                var element = document.getElementById("toggle");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+                element = document.getElementById("toggle1");
+                element.classList.add("hidden");
+                element.classList.remove("visible");
+              }
+            }}
             onClick={(e) => {
               if (e.target.value === "") {
                 var element = document.getElementById("toggle");
